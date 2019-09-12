@@ -1,2 +1,2 @@
 # Colormag-Theme-Discourse-Widget
-This plugin adds a discourse widget to be used with the free olormag theme by ThemeGrill.
+This plugin adds a discourse widget to be used with the free Colormag Wordpress theme by ThemeGrill.
