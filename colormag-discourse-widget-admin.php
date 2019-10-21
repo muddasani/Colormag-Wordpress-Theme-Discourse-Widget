@@ -3,8 +3,12 @@
 		//Form data sent
 		$discourse_url = $_POST['discourse_url'];
 		$random_image = $_POST['random_image'];
+		$grayscale_random_image = $_POST['grayscale_random_image'];
+		$blur_random_image = $_POST['blur_random_image'];
 		update_option('discourse_url', $discourse_url);
 		update_option('random_image', $random_image);
+		update_option('grayscale_random_image', $grayscale_random_image);
+		update_option('blur_random_image', $blur_random_image);
 		?>
 		<div class="updated"><p><strong><?php echo __('Options saved.', 'colormag-discourse-widget'); ?></strong></p></div>
 		<?php
@@ -12,7 +16,8 @@
 		//Normal page display
 		$discourse_url = get_option('discourse_url');
 		$random_image = get_option('random_image');
-
+		$grayscale_random_image = get_option('grayscale_random_image');
+		$blur_random_image = get_option('blur_random_image');
 	}
 ?>
 
@@ -47,6 +52,28 @@
 					<label for="random_image">
 					<input name="random_image" id="random_image" value="1"<?php checked('1', get_option('random_image')); ?> type="checkbox">
 					<?php echo  __('If the post doesn\'t have an image then use https://picsum.photos for a random image', 'colormag-discourse-widget'); ?></label>
+				</td>
+			</tr>
+			<!-- grayscale_random_image -->
+			<tr>
+				<th scope="row">
+					<label for="grayscale_random_image"><?php echo __('Grayscale effect', 'colormag-discourse-widget'); ?></label>
+				</th>
+				<td scope="row" colspan="2" class="th-full">
+					<label for="grayscale_random_image">
+					<input name="grayscale_random_image" id="grayscale_random_image" value="1"<?php checked('1', get_option('grayscale_random_image')); ?> type="checkbox">
+					<?php echo  __('If random images is selcted - then add a grayscale effect', 'colormag-discourse-widget'); ?></label>
+				</td>
+			</tr>
+			<!-- blur_random_image -->
+			<tr>
+				<th scope="row">
+					<label for="blur_random_image"><?php echo __('Blur effect', 'colormag-discourse-widget'); ?></label>
+				</th>
+				<td scope="row" colspan="2" class="th-full">
+					<label for="blur_random_image">
+					<input name="blur_random_image" id="blur_random_image" value="1"<?php checked('1', get_option('blur_random_image')); ?> type="checkbox">
+					<?php echo  __('If random images is selcted - then add a blur effect', 'colormag-discourse-widget'); ?></label>
 				</td>
 			</tr>			
 		</tbody>

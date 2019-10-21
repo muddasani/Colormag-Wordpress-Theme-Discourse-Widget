@@ -1,9 +1,9 @@
 <?php
 /*
-Plugin Name: Colormag Theme Discourse Widget
+Plugin Name: Colormag WordPress Theme Discourse Widget
 Plugin URI: https://studmed.dk
 Description: This plugin adds a discourse widget to be used with the free colormag theme by ThemeGrill.
-Version: 1.0 beta 01
+Version: 1.0 beta 02
 Author: Frederik Liljefred
 Author URI: https://studmed.dk
 License: GPL2
@@ -121,6 +121,8 @@ class Colormag_Discourse_Widget_Style_1 extends WP_Widget {
 		// Greb the settings in the wp admin site; wp-admin/admin.php?page=colormag_discourse_widget_admin
 		$discourse_url = get_option('discourse_url'); //The discourse forum url
 		$random_image = get_option('random_image'); //Do we want to use a random image or not "1" when it is checked
+		$grayscale_random_image = get_option('grayscale_random_image'); //If selected then random images gets a grayscale effect
+		$blur_random_image = get_option('blur_random_image'); //If selected then random images gets a blur effect
 		
 		// WordPress core before_widget hook (always include )
 		echo $before_widget;
@@ -179,10 +181,27 @@ class Colormag_Discourse_Widget_Style_1 extends WP_Widget {
 							} else {
 							$title_formatted = $one->title;  //limit the title lenght to 55 chars
 						}
-						//Random Image path: https://picsum.photos/width/hight?random=xx
+						
+						//Our random image path
 						$picsum = 'https://picsum.photos';
-						$random_image_scr_small = $picsum.'/130/90/?random='.$one->id.'';
-						$random_image_scr_big = $picsum.'/390/205/?random='.$one->id.'';
+						
+						//Let us set the after effect of the images - either blur, grayscale, or none effect
+						if ( empty($blur_random_image) ) {
+							$blur = "";
+						} else {
+							$blur = "&blur=2"; // 2 indicates how much blur effect 1-10
+						}
+						if ( empty($grayscale_random_image) ) {
+							$grayscale = "";
+						} else {
+							$grayscale = "&grayscale";
+						}
+						$image_effect = $grayscale.$blur;
+						
+						
+						//Advance usage of picsum https://picsum.photos/390/205/?random=6786&grayscale&blur=2
+						$random_image_scr_small = $picsum.'/130/90/?random='.$one->id.''.$image_effect;
+						$random_image_scr_big = $picsum.'/390/205/?random='.$one->id.''.$image_effect;
 
 								  //We now wants to get the content from the topic as well. This is solved by the following-post
 								  $discourseTopicUrl = $discourse_url.'/t/'.$one->slug.'/'.$one->id.'.json';
@@ -483,6 +502,8 @@ class Colormag_Discourse_Widget_Style_2 extends WP_Widget {
 		// Greb the settings in the wp admin site; wp-admin/admin.php?page=colormag_discourse_widget_admin
 		$discourse_url = get_option('discourse_url'); //The discourse forum url
 		$random_image = get_option('random_image'); //Do we want to use a random image or not "1" when it is checked
+		$grayscale_random_image = get_option('grayscale_random_image'); //If selected then random images gets a grayscale effect
+		$blur_random_image = get_option('blur_random_image'); //If selected then random images gets a blur effect
 		
 		// WordPress core before_widget hook (always include )
 		echo $before_widget;
@@ -541,10 +562,26 @@ class Colormag_Discourse_Widget_Style_2 extends WP_Widget {
 							} else {
 							$title_formatted = $one->title;  //limit the title lenght to 55 chars
 						}
-						//Random Image path: https://picsum.photos/width/hight?random=xx
+						
+						//Our random image path
 						$picsum = 'https://picsum.photos';
-						$random_image_scr_small = $picsum.'/130/90/?random='.$one->id.'';
-						$random_image_scr_big = $picsum.'/390/205/?random='.$one->id.'';				
+						
+						//Let us set the after effect of the images - either blur, grayscale, or none effect
+						if ( empty($blur_random_image) ) {
+							$blur = "";
+						} else {
+							$blur = "&blur=2"; // 2 indicates how much blur effect 1-10
+						}
+						if ( empty($grayscale_random_image) ) {
+							$grayscale = "";
+						} else {
+							$grayscale = "&grayscale";
+						}
+						$image_effect = $grayscale.$blur;
+						
+						//Advance usage of picsum https://picsum.photos/390/205/?random=6786&grayscale&blur=2
+						$random_image_scr_small = $picsum.'/130/90/?random='.$one->id.''.$image_effect;
+						$random_image_scr_big = $picsum.'/390/205/?random='.$one->id.''.$image_effect;			
 
 								  //We now wants to get the content from the topic as well. This is solved by the following-post
 								  $discourseTopicUrl = $discourse_url.'/t/'.$one->slug.'/'.$one->id.'.json';
