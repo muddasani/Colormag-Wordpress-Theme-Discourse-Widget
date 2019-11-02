@@ -3,6 +3,7 @@ This plugin adds a discourse widget to be used with the free Colormag Wordpress 
 
 Demosite
 Wordpress: [studmed.dk](https://forum.studmed.dk)
+
 Discourse: [forum.studmed.dk](https://forum.studmed.dk)
 
 Setting options
