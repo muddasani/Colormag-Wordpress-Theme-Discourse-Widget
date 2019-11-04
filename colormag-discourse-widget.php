@@ -3,7 +3,7 @@
 Plugin Name: Colormag WordPress Theme Discourse Widget
 Plugin URI: https://studmed.dk
 Description: This plugin adds a discourse widget to be used with the free colormag theme by ThemeGrill.
-Version: 1.0 beta 02
+Version: 1.0
 Author: Frederik Liljefred
 Author URI: https://studmed.dk
 License: GPL2
